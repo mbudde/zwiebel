@@ -149,11 +149,9 @@ for a task description, unless run with universal argument."
 
 (defun zwiebel-countdown-str (m-s &optional force-seconds)
   "Convert minute-second pair to time string."
-  (let ((m (number-to-string (car m-s)))
-        (s (number-to-string (cdr m-s))))
-    (if (or zwiebel-show-seconds force-seconds)
-        (concat m ":" s)
-        m)))
+  (if (or zwiebel-show-seconds force-seconds)
+      (format "%d:%02d" (car m-s) (cdr m-s))
+    (format "%d" (car m-s))))
 
 (defun zwiebel-overtime-str ()
   "Return string for how long work has gone into overtime."
